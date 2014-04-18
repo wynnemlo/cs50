@@ -1,4 +1,5 @@
 cs50
 ====
 
-CS 50 problem sets
+Self-studying Harvard's CS50 through EdX. My solutions to the course's problem sets.
+
