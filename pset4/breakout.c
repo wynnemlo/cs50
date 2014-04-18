@@ -1,9 +1,13 @@
-//
-// breakout.c
-//
-// Computer Science 50
-// Problem Set 4
-//
+/**
+ * breakout.c
+ *
+ * Wynne Lo
+ * wynnemlo@hku.hk
+ *
+ * Computer Science 50
+ * Problem set 4
+ * 
+ */
 
 // standard libraries
 #define _XOPEN_SOURCE
@@ -104,6 +108,7 @@ int main(void)
         {
             // subtract 1 life
             lives = lives - 1;
+            // if more than 0 lives left, reset ball location
             if (lives > 0)
             {
                 setLocation(ball, 195, 300);
@@ -132,15 +137,16 @@ int main(void)
         // linger before moving again
         pause(2);
         
+        // if there is collision
         if (detectCollision(window, ball) != NULL)
         {
             GObject object = detectCollision(window, ball);
-            // if ball hits paddle
+            // if ball collides with paddle
             if (object == paddle)
             {
                 velocityY = -velocityY;
             }
-            // if ball hits a GRect
+            // if ball collides with a GRect
             else if (strcmp(getType(object), "GRect") == 0)
             {
                 if (strcmp(getType(object), "GLabel") ==  0)
@@ -157,6 +163,8 @@ int main(void)
             }
 
         }
+
+        // if user has hit all bricks
         if (points >= ROWS*COLS)
         {
             setLabel(label, "Congrats!");
