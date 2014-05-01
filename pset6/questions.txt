@@ -1,0 +1,37 @@
+0.  The longest word in the dictionary.
+1.  Returns resource usage statistics.
+2.  16
+3.  If you don't use pointers, the function would make a copy of before/after,
+    which wastes time and memory.
+4.  It fetches 1 character at a time.
+
+    Then checks to make sure that character is an alphabetical character
+    or an apostrophe, then it adds it to the word, which is represented 
+    with an array of 45+1 length (Longest word is 45 characters. Need 
+    1 additional character for the \0). If the word turns out to be longer than
+    45 character, the spellchecker finishes up that word till it hits a non-
+    alphanumeric character (indicating end of word) and resets index to 0.
+    
+    If the character is a digit, the spellchecker finishes up that word till it hits
+    a non-alphanumeric character (indicating end of word).
+    
+    If the character is neither a digit nor an alphabetical letter, that means
+    it has reached the end of a word. The spellchecker sets the current index to
+    \0 so that we know where the end of the word is in the array.
+    
+    It then calls check() on the word. If it returns false (meaning the word
+    is mispelled), it prints out the mispelling and updates the mispellings
+    counter. At the end, once again, it resets index to 0 so it gets ready to
+    traverse the next word.
+5.  If you use fscanf, then the spellchecker might try to read words longer than
+    45 characters into our fixed array.
+6.  Declared as a constant, the input then cannot be changed.
+7.  A hashtable that is implemeneted as an array of linked lists. Each item of the linked
+    list is implemented as a node, that includes 2 fields of data - a word, and a
+    pointer to the next node.
+8.  This is my first time I got it working correctly.
+9.  None.
+10. Not sure. I could've tried to reorganize "load" so that it sorts the words
+    when it's loaded, but with the size of my hashtable and the excellent
+    hash function provided by a Reddit member, I think the number of 
+    collisions are not that great.
